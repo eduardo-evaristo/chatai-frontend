@@ -6,7 +6,7 @@ import NewChatButton from "./NewChatButton";
 export default function App() {
   return (
     <>
-      <div className="grid grid-rows-[auto_1fr_auto] h-screen">
+      <div className="grid grid-rows-[auto_1fr_auto] h-screen bg-indigo-950">
         <Header />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-self-center w-screen p-5 overflow-scroll">
           {Array.from({ length: 10 }, (_val, i) => (
