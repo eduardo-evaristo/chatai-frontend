@@ -1,21 +1,27 @@
-import Chat from "./Chat";
-import Footer from "./Footer";
-import Header from "./Header";
-import NewChatButton from "./NewChatButton";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
+import { action } from "./NewChatButton";
+import AppLayout from "./AppLayout";
+import ChatsSection, { loader as chatsLoader } from "./ChatsSection";
+
+const router = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    children: [
+      { path: "/", element: <Navigate to="chats" replace={true} /> },
+      {
+        path: "chats",
+        element: <ChatsSection />,
+        loader: chatsLoader,
+        action: action,
+      },
+    ],
+  },
+]);
 
 export default function App() {
-  return (
-    <>
-      <div className="grid grid-rows-[auto_1fr_auto] h-screen bg-indigo-950">
-        <Header />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-self-center w-screen p-5 overflow-scroll">
-          {Array.from({ length: 10 }, (_val, i) => (
-            <Chat key={i} />
-          ))}
-          <NewChatButton />
-        </div>
-        <Footer />
-      </div>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
