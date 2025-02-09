@@ -3,3 +3,8 @@ export type Chat = {
   name: string;
   summary: string;
 };
+
+export type ChatMessage = {
+  content: string;
+  isFromUser: boolean;
+};

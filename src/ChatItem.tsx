@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store/store";
 import { selectChat } from "./store/chatsSlice";
 import ChatOptions from "./ChatOptions";
+import { useNavigate } from "react-router-dom";
 
 type props = { data: Chat };
 
@@ -12,9 +13,17 @@ export default function ChatItem({ data }: props) {
   const isSelected: boolean =
     useSelector<RootState>((store) => store.chats.selectedChat) === data.id;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  function handleClick(chatId: string) {
+    navigate(`/chat/${chatId}`, { replace: true });
+  }
 
   return (
-    <div className="bg-pink-300 w-auto h-52 py-10 px-9 rounded-sm relative flex items-center shadow-md">
+    <div
+      className="bg-pink-300 w-auto h-52 py-10 px-9 rounded-sm relative flex items-center shadow-md hover:bg-pink-400 transition-colors"
+      onClick={() => handleClick(data.id)}
+    >
       <Settings2
         className={`${
           isSelected ? "text-gray-50" : ""
