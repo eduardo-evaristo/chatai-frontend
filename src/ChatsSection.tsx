@@ -33,8 +33,3 @@ export async function loader() {
   store.dispatch(load(data));
   return data;
 }
-
-// {
-// 	"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjMzdhZGJmMC03YTllLTRiODMtYTJlOC0zNWVmZWJhMzJjNDEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTczOTAzMDE2NCwiZXhwIjoxNzM5NjM0OTY0fQ.JAhGbL70ChR69BKuQXRqR8ruwf8XoY36Il2nPx0YcXI",
-// 	"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjMzdhZGJmMC03YTllLTRiODMtYTJlOC0zNWVmZWJhMzJjNDEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTczOTAzMDE2NCwiZXhwIjoxNzM5MDMzNzY0fQ.wPy_cyR6htbYfmfXAZNJSCj8BlSwbFD2_Dvat7uJZK4"
-// }

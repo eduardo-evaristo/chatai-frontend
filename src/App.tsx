@@ -8,7 +8,7 @@ import AppLayout from "./AppLayout";
 import ChatsSection, { loader as chatsLoader } from "./ChatsSection";
 import { Provider } from "react-redux";
 import store from "./store/store";
-import ChatLayout from "./ChatLayout";
+import ChatLayout, { ChatBalloon } from "./ChatLayout";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +21,25 @@ const router = createBrowserRouter([
         loader: chatsLoader,
         action: action,
       },
-      { path: "/chats/:id", element: <ChatLayout /> },
+    ],
+  },
+  {
+    path: "/chat",
+    element: <ChatLayout />,
+    children: [
+      {
+        path: ":id",
+        element: (
+          <>
+            <ChatBalloon />
+            <ChatBalloon user={true} />
+            <ChatBalloon />
+            <ChatBalloon user={true} />
+            <ChatBalloon />
+            <ChatBalloon user={true} />
+          </>
+        ),
+      },
     ],
   },
 ]);
