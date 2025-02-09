@@ -18,13 +18,8 @@ export default function NewChatButton() {
 export async function action() {
   const res = await fetch("http://localhost:3000/chats", {
     method: "POST",
-    headers: [
-      [
-        "authorization",
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjMzdhZGJmMC03YTllLTRiODMtYTJlOC0zNWVmZWJhMzJjNDEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTczOTAzMDE2NCwiZXhwIjoxNzM5MDMzNzY0fQ.wPy_cyR6htbYfmfXAZNJSCj8BlSwbFD2_Dvat7uJZK4",
-      ],
-    ],
+    headers: [["authorization", `Bearer ${import.meta.env.VITE_ACCESS_TOKEN}`]],
   });
   const data = await res.json();
-  return redirect(`http://localhost:5173/chats/${data.id}`);
+  return redirect(`/chats/${data.id}`);
 }

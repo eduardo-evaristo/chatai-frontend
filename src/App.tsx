@@ -6,6 +6,9 @@ import {
 import { action } from "./NewChatButton";
 import AppLayout from "./AppLayout";
 import ChatsSection, { loader as chatsLoader } from "./ChatsSection";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import ChatLayout from "./ChatLayout";
 
 const router = createBrowserRouter([
   {
@@ -18,10 +21,15 @@ const router = createBrowserRouter([
         loader: chatsLoader,
         action: action,
       },
+      { path: "/chats/:id", element: <ChatLayout /> },
     ],
   },
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 }
